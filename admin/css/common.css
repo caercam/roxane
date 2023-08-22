@@ -1,0 +1,16 @@
+
+.wp-list-table thead .manage-column.column-thumb,
+.wp-list-table tfoot .manage-column.column-thumb,
+.wp-list-table tbody .thumb.column-thumb {
+	text-align: center;
+}
+
+.wp-list-table tbody .thumb.column-thumb img {
+	max-width: 150px;
+}
+
+#addtag .form-field.term-image-wrap .category-image,
+#edittag .form-field.term-image-wrap .category-image {
+	display: block;
+	max-width: 95%;
+}
