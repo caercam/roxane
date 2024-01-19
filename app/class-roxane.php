@@ -8,7 +8,7 @@
 
 namespace roxane;
 
-use roxane\registrars;
+use roxane\registrars\Taxonomies;
 use roxane\editors\Category_Editor;
 use roxane\editors\Post_Editor;
 use roxane\traits\Singleton;
@@ -116,6 +116,9 @@ class Roxane {
 		// Load traits.
 		require_once ROXANE_PATH . 'app/traits/class-singleton.php';
 
+		// Load registrars.
+		require_once ROXANE_PATH . 'app/registrars/class-taxonomies.php';
+
 		// Load frontend.
 		require_once ROXANE_PATH . 'app/class-frontend.php';
 
@@ -133,7 +136,11 @@ class Roxane {
 	 * @since 1.0
 	 * @access public
 	 */
-	public function rehearsal() {}
+	public function rehearsal() {
+
+		$taxonomies = Taxonomies::instance();
+		add_action( 'init', [ $taxonomies, 'register' ] );
+	}
 
 	/**
 	 * Load admin features.
