@@ -1,16 +1,22 @@
 
-.wp-list-table thead .manage-column.column-thumb,
-.wp-list-table tfoot .manage-column.column-thumb,
-.wp-list-table tbody .thumb.column-thumb {
+.wp-list-table thead .manage-column.column-thumbnail,
+.wp-list-table tfoot .manage-column.column-thumbnail,
+.wp-list-table tbody .thumbnail.column-thumbnail {
 	text-align: center;
+	width: 150px;
 }
 
-.wp-list-table tbody .thumb.column-thumb img {
+.wp-list-table tbody .thumbnail.column-thumbnail img {
 	max-width: 150px;
 }
 
-#addtag .form-field.term-image-wrap .category-image,
-#edittag .form-field.term-image-wrap .category-image {
+#addtag .form-field.term-image-wrap .term-image,
+#edittag .form-field.term-image-wrap .term-image {
 	display: block;
+	margin-bottom: 10px;
 	max-width: 95%;
+}
+
+.edit-tags-php .form-field + .submit {
+	margin-top: 10px;
 }

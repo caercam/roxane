@@ -30,7 +30,7 @@ class Post_Editor {
 	 */
 	public function post_columns( $columns ) {
 
-		$columns['thumb'] = '<span class="dashicons dashicons-format-image"></span>';
+		$columns['thumbnail'] = '<span class="dashicons dashicons-format-image"></span>';
 	
 		return $columns;
 	}
@@ -47,7 +47,7 @@ class Post_Editor {
 	 */
 	public function post_column( $column_name, $post_id ) {
 
-		if ( 'thumb' !== $column_name ) {
+		if ( 'thumbnail' !== $column_name ) {
 			return false;
 		}
 

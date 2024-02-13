@@ -55,6 +55,10 @@ class Dashboard {
 
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_assets' ] );
+
+		add_action( 'admin_menu', [ $this, 'register_admin_pages' ] );
 	}
 
 	/**
@@ -66,8 +70,6 @@ class Dashboard {
 	 * @param string $hook_suffix The current admin page.
 	 */
 	public function enqueue_styles( $hook_suffix ) {
-
-		global $post_type;
 
     $this->register_styles();
 
@@ -109,5 +111,46 @@ class Dashboard {
 	private function register_scripts() {
 
 		wp_register_script( 'roxane-common', ROXANE_URL . 'admin/js/common.js', [ 'jquery' ], $this->version, 'all' );
+	}
+
+	public function enqueue_block_editor_assets() {
+
+		$this->register_block_editor_sidebar_plugin();
+
+		wp_enqueue_script( 'series-episode-backdrop-plugin' );
+	}
+
+	public function register_block_editor_sidebar_plugin() {
+
+		wp_register_script( 'series-episode-backdrop-plugin', ROXANE_URL . 'admin/js/plugins.min.js', [ 'wp-plugins', 'wp-edit-post', 'wp-element' ] );
+	}
+
+	/**
+	 * Register admin-side styles.
+	 *
+	 * @since 1.0
+	 * @access public
+	 */
+	public function register_admin_pages() {
+
+		add_submenu_page( 'tools.php', 'TMDb', 'TMDb', 'manage_options', 'tmdb', [ $this, 'tmdb' ] );
+	}
+
+	/**
+	 * TMDb page callback.
+	 * 
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function tmdb() {
+
+		$updated = false;
+		if ( isset( $_POST['tmdb_api_key'] ) ) {
+			check_admin_referer( 'update-tmdb-api-key' );
+			update_option( 'tmdb_api_key', $_POST['tmdb_api_key'] );
+			$updated = true;
+		}
+
+		require_once ROXANE_PATH . 'admin/templates/tmdb.php';
 	}
 }

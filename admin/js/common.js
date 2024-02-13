@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-  $(".upload_category_image_button").click(function (event) {
+  $(".upload_term_image_button").click(function (event) {
     event.preventDefault();
 
     var upload_button = $(this),
@@ -17,16 +17,16 @@ jQuery(document).ready(function ($) {
 
       frame.close();
 
-      $(".category-image").prop("src", attachment.attributes.url);
-      $("#category_image").val(attachment.attributes.id);
+      $(".term-image").prop("src", attachment.attributes.url);
+      $("#term_image").val(attachment.attributes.id);
     });
 
     frame.open();
   });
 
-  $(".remove_category_image_button").click(function () {
-    $(".category-image").attr("src", cmme.default_image);
-    $("#category_image").val("");
+  $(".remove_term_image_button").click(function () {
+    $(".term-image").attr("src", cmme.default_image);
+    $("#term_image").val("");
     $(this)
       .parent()
       .siblings(".title")
@@ -34,5 +34,9 @@ jQuery(document).ready(function ($) {
       .attr("src", cmme.default_image);
 
     return false;
+  });
+
+  $('.edit-tags-php #submit').click(function() {
+    $(".term-image").attr("src", cmme.default_image);
   });
 });

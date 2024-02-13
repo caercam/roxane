@@ -8,9 +8,12 @@
 
 namespace roxane;
 
+use roxane\registrars\Permalinks;
 use roxane\registrars\Taxonomies;
+use roxane\registrars\Term_Meta;
 use roxane\editors\Category_Editor;
 use roxane\editors\Post_Editor;
+use roxane\editors\Series_Editor;
 use roxane\traits\Singleton;
 
 /**
@@ -118,6 +121,8 @@ class Roxane {
 
 		// Load registrars.
 		require_once ROXANE_PATH . 'app/registrars/class-taxonomies.php';
+		require_once ROXANE_PATH . 'app/registrars/class-term-meta.php';
+		require_once ROXANE_PATH . 'app/registrars/class-permalinks.php';
 
 		// Load frontend.
 		require_once ROXANE_PATH . 'app/class-frontend.php';
@@ -126,6 +131,7 @@ class Roxane {
 		if ( is_admin() ) {
 			require_once ROXANE_PATH . 'admin/editors/class-category-editor.php';
 			require_once ROXANE_PATH . 'admin/editors/class-post-editor.php';
+			require_once ROXANE_PATH . 'admin/editors/class-series-editor.php';
 			require_once ROXANE_PATH . 'app/class-dashboard.php';
 		}
 	}
@@ -140,6 +146,13 @@ class Roxane {
 
 		$taxonomies = Taxonomies::instance();
 		add_action( 'init', [ $taxonomies, 'register' ] );
+		add_filter( 'term_link', [ $taxonomies, 'term_link' ], 1, 2 );
+
+		$term_meta = Term_Meta::instance();
+		add_action( 'saved_term', [ $term_meta, 'save_meta_input' ], 10, 3 );
+
+		$permalinks = Permalinks::instance();
+		add_filter( 'series_rewrite_rules', [ $permalinks, 'series_rewrite_rules' ], 1, 1 );
 	}
 
 	/**
@@ -166,6 +179,17 @@ class Roxane {
 		add_filter( 'manage_edit-category_columns',  [ $category_editor, 'category_columns' ] );
 		add_filter( 'manage_category_custom_column', [ $category_editor, 'category_column' ], 10, 3 );
 
+		$series_editor = new Series_Editor;
+		add_action( 'series_edit_form_fields', [ $series_editor, 'edit_series_image' ] );
+		add_action( 'series_add_form_fields',  [ $series_editor, 'add_series_image' ] );
+		add_action( 'edit_series',             [ $series_editor, 'save_series_image' ] );
+		add_action( 'create_series',           [ $series_editor, 'save_series_image' ] );
+		add_action( 'series_edit_form_fields', [ $series_editor, 'edit_series_fields' ] );
+		add_action( 'series_add_form_fields',  [ $series_editor, 'edit_series_fields' ] );
+
+		add_filter( 'manage_edit-series_columns',  [ $series_editor, 'series_columns' ] );
+		add_filter( 'manage_series_custom_column', [ $series_editor, 'series_column' ], 10, 3 );
+
 		$post_editor = new Post_Editor;
 		add_filter( 'manage_posts_columns',       [ $post_editor, 'post_columns' ] );
 		add_filter( 'manage_posts_custom_column', [ $post_editor, 'post_column' ], 10, 3 );
@@ -181,7 +205,6 @@ class Roxane {
 
 		$frontend = Frontend::instance();
 		add_action( 'init', [ $frontend, 'register' ] );
-
 	}
 
 	/**
