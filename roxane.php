@@ -3,7 +3,7 @@
  * Plugin Name: Roxane
  * Plugin URI: https://blog.charliemerland.me/
  * Description: CharlieMerland.me main plugin.
- * Version: 1.0
+ * Version: 1.1
  * Author: Charlie Merland
  * Author URI: https://charliemerland.me/
  * License: GPLv2
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ROXANE_VERSION', '1.0' );
+define( 'ROXANE_VERSION', '1.1' );
 define( 'ROXANE_BUILD',   false );
 define( 'ROXANE_PATH',    trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'ROXANE_URL',     trailingslashit( plugin_dir_url( __FILE__ ) ) );
