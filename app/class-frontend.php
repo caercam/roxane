@@ -215,9 +215,10 @@ class Frontend {
     }
 
     $seasons = get_terms( [
-			'name' => "{$matches[1]} − Saison {$matches[2]}",
+			'slug' => "{$matches[1]}-saison-{$matches[2]}",
 			'parent' => $series->term_id,
 			'taxonomy' => 'series',
+			'hide_empty' => false,
     ] );
 
     if ( ! is_array( $seasons ) ) {
