@@ -215,7 +215,7 @@ class Frontend {
     }
 
     $seasons = get_terms( [
-			'name' => "Saison {$matches[2]}",
+			'name' => "{$matches[1]} − Saison {$matches[2]}",
 			'parent' => $series->term_id,
 			'taxonomy' => 'series',
     ] );
