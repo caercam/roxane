@@ -39,7 +39,7 @@ class Category_Editor {
 			<label for="term_image"><?php _e( 'Image' ) ?></label>
 			<img class="term-image" src="<?php echo esc_url( $image_url ) ?>"/>
 			<input type="hidden" name="category_image" id="term_image" value="" />
-			<button class="upload_term_image_button button">Sélectionner une image</button>
+			<button class="upload-term-image-button button">Sélectionner une image</button>
 		</div>
 <?php
 	}
@@ -65,8 +65,8 @@ class Category_Editor {
 			<td>
 				<img class="term-image" src="<?php echo esc_url( $attachment_url ) ?>"/>
 				<input type="hidden" name="category_image" id="term_image" value="<?php echo esc_attr( $attachment_id ) ?>" />
-				<button class="upload_term_image_button button">Sélectionner une image</button>
-				<button class="remove_term_image_button button">Supprimer l’image</button>
+				<button class="upload-term-image-button button">Sélectionner une image</button>
+				<button class="remove-term-image-button button">Supprimer l’image</button>
 				<p class="description"></p>
 			</td>
 		</tr>

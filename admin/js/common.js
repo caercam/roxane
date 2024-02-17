@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-  $(".upload_term_image_button").click(function (event) {
+  $(".upload-term-image-button").click(function (event) {
     event.preventDefault();
 
     var upload_button = $(this),
@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
     frame.open();
   });
 
-  $(".remove_term_image_button").click(function () {
+  $(".remove-term-image-button").click(function () {
     $(".term-image").attr("src", cmme.default_image);
     $("#term_image").val("");
     $(this)

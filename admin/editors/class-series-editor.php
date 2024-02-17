@@ -40,7 +40,7 @@ class Series_Editor {
 			<label for="term_image"><?php _e( 'Image' ) ?></label>
 			<img class="term-image" src="<?php echo esc_url( $image_url ) ?>"/>
 			<input type="hidden" name="series_image" id="term_image" value="" />
-			<button type="button" class="upload_term_image_button button">Sélectionner une image</button>
+			<button type="button" class="upload-term-image-button button">Sélectionner une image</button>
 		</div>
 <?php
 	}
@@ -59,6 +59,8 @@ class Series_Editor {
 
 		$attachment_id  = get_term_meta( $series->term_id, 'series_image', true );
 		$attachment_url = $this->get_image( $series->term_id, 'large' );
+
+		$tmdb_id = get_term_meta( $series->term_id, 'series_tmdb_id', $single = true );
 ?>
 		<script>cmme = { default_image: '<?php echo ROXANE_URL . 'public/images/default.jpg' ?>' };</script>
 		<tr class="form-field form-required term-image-wrap">
@@ -66,8 +68,8 @@ class Series_Editor {
 			<td>
 				<img class="term-image" src="<?php echo esc_url( $attachment_url ) ?>"/>
 				<input type="hidden" name="series_image" id="term_image" value="<?php echo esc_attr( $attachment_id ) ?>" />
-				<button type="button" class="upload_term_image_button button">Sélectionner une image</button>
-				<button type="button" class="remove_term_image_button button">Supprimer l’image</button>
+				<button type="button" class="upload-term-image-button button">Sélectionner une image</button>
+				<button type="button" class="remove-term-image-button button">Supprimer l’image</button>
 				<p class="description"></p>
 			</td>
 		</tr>
