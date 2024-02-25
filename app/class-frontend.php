@@ -192,13 +192,6 @@ class Frontend {
 			set_post_format( $post_id, 'status' );
 		}
 
-		if ( ! has_term( 'Séries', 'category', $post ) ) {
-			$term = get_term_by( 'name', 'Séries', 'category' );
-			if ( $term instanceof \WP_Term ) {
-				wp_set_post_terms( $post_id, $term->term_id, 'category' );
-			}
-		}
-
 		$preg = preg_match_all( '/(.*?) ([0-9]+)(×|x)([0-9]+)/m', $post->post_title, $matches );
     if ( ! $preg ) {
 			return false;
@@ -208,6 +201,13 @@ class Frontend {
     if ( empty( $matches ) ) {
 			return false;
     }
+
+		if ( ! has_term( 'Séries', 'category', $post ) ) {
+			$term = get_term_by( 'name', 'Séries', 'category' );
+			if ( $term instanceof \WP_Term ) {
+				wp_set_post_terms( $post_id, $term->term_id, 'category' );
+			}
+		}
 
     $series = get_term_by( 'name', $matches[1], 'series' );
     if ( ! $series ) {
