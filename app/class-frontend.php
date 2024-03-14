@@ -86,7 +86,7 @@ class Frontend {
 	 */
 	private function register_styles() {
 
-		wp_register_style( 'roxane', ROXANE_PUBLIC_STYLES_URL . 'app.min.css', [], $this->version, 'all' );
+		wp_register_style( 'roxane', ROXANE_PUBLIC_STYLES_URL . 'roxane.css', [], $this->version, 'all' );
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Frontend {
 	 */
 	private function register_scripts() {
 
-		wp_register_script( 'roxane', ROXANE_ADMIN_SCRIPTS_URL . 'app.min.js', [], $this->version, true );
+		wp_register_script( 'roxane', ROXANE_PUBLIC_SCRIPTS_URL . 'roxane.js', [], $this->version, true );
 	}
 
 	/**

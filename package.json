@@ -1,40 +1,29 @@
 {
   "name": "roxane",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "license": "GPLv2",
-  "main": "index.js",
-  "dependencies": {
-    "path": "^0.12.7"
+  "main": "build/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start",
+		"start:hot": "wp-scripts start --hot"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.1",
-    "@babel/preset-env": "^7.21.5",
-    "@wordpress/scripts": "^26.3.0",
-    "autoprefixer": "^10.4.14",
-    "babel-loader": "^9.1.2",
-    "css-loader": "^6.7.3",
-    "mini-css-extract-plugin": "^2.7.5",
-    "postcss": "^8.4.23",
-    "postcss-loader": "^7.3.0",
-    "postcss-nested": "^6.0.1",
-    "sass": "^1.62.1",
-    "sass-loader": "^13.2.2",
-    "style-loader": "^3.3.2",
-    "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2",
-    "webpack-dev-server": "^4.13.3"
-  },
-  "scripts": {
-    "copy:app:css": "cp build/app.*.css admin/css",
-    "copy:app:js": "cp build/app.*.js admin/js",
-    "copy:app": "npm run copy:app:js && npm run copy:app:css",
-    "copy:blocks:css": "cp build/blocks.*.css admin/css",
-    "copy:blocks:js": "cp build/blocks.*.js admin/js",
-    "copy:blocks": "npm run copy:blocks:js && npm run copy:blocks:css",
-    "copy": "npm run copy:app && npm run copy:blocks",
-    "clean": "rm -f admin/css/*.min.css admin/js/*.min.js public/css/*.min.css public/js/*.min.js",
-    "build": "wp-scripts build src/*.js --progress && npm run copy",
-    "start": "wp-scripts start src/*.js",
-    "watch": "wp-scripts start src/*.js --progress"
-  }
+		"@wordpress/scripts": "^26.6.0",
+		"postcss": "^8.4.30",
+		"postcss-for": "^2.1.1",
+		"postcss-import": "^15.1.0",
+		"postcss-nested": "^6.0.1",
+		"postcss-nested-ancestors": "^3.0.0",
+		"underscore": "1.13.6"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^9.32.0",
+		"object-hash": "^3.0.0"
+	}
 }

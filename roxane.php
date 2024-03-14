@@ -3,7 +3,7 @@
  * Plugin Name: Roxane
  * Plugin URI: https://blog.charliemerland.me/
  * Description: CharlieMerland.me main plugin.
- * Version: 1.1.2
+ * Version: 1.2.0
  * Author: Charlie Merland
  * Author URI: https://charliemerland.me/
  * License: GPLv2
@@ -17,15 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ROXANE_VERSION', '1.1.2' );
+define( 'ROXANE_VERSION', '1.2.0' );
 define( 'ROXANE_BUILD',   false );
 define( 'ROXANE_PATH',    trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'ROXANE_URL',     trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
-define( 'ROXANE_ADMIN_SCRIPTS_URL',  trailingslashit( ROXANE_URL . ( ROXANE_BUILD ? 'admin/js' : 'build' ) ) );
-define( 'ROXANE_ADMIN_STYLES_URL',   trailingslashit( ROXANE_URL . ( ROXANE_BUILD ? 'admin/css' : 'build' ) ) );
-define( 'ROXANE_PUBLIC_SCRIPTS_URL', trailingslashit( ROXANE_URL . ( ROXANE_BUILD ? 'public/js' : 'build' ) ) );
-define( 'ROXANE_PUBLIC_STYLES_URL',  trailingslashit( ROXANE_URL . ( ROXANE_BUILD ? 'public/css' : 'build' ) ) );
+define( 'ROXANE_ADMIN_SCRIPTS_URL',  trailingslashit( ROXANE_URL . 'admin/js' ) );
+define( 'ROXANE_ADMIN_STYLES_URL',   trailingslashit( ROXANE_URL . 'admin/css' ) );
+define( 'ROXANE_PUBLIC_SCRIPTS_URL', trailingslashit( ROXANE_URL . 'public/js' ) );
+define( 'ROXANE_PUBLIC_STYLES_URL',  trailingslashit( ROXANE_URL . 'public/css' ) );
 
 require_once ROXANE_PATH . 'app/traits/class-singleton.php';
 require_once ROXANE_PATH . 'app/class-roxane.php';

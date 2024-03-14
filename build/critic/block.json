@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxane/critic",
+  "version": "1.0.0",
+  "title": "Critique",
+  "category": "roxane",
+  "description": "Displays a critic of a movie.",
+  "attributes": {
+    "tmdb_id": {
+      "type": "integer",
+      "default": null
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "year": {
+      "type": "integer",
+      "default": null
+    },
+    "director": {
+      "type": "string",
+      "default": ""
+    },
+    "poster": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "roxane",
+  "editorScript": "file:index.js",
+  "editorStyle": "file:index.css",
+  "style": "file:style-index.css",
+  "render": "file:render.php"
+}

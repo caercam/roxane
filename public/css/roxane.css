@@ -1,9 +1,8 @@
-
 /**
  * Variables. You can override this in your own styles.
  */
 
- body {
+body {
   --roxane-preset-dark: #2c3338;
   --roxane-preset-font-normal: var(--wp--preset--font-size--normal, 14px);
   --roxane-preset-font-big: var(--wp--preset--font-size--big, 20px);

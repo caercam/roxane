@@ -124,6 +124,9 @@ class Roxane {
 		require_once ROXANE_PATH . 'app/registrars/class-term-meta.php';
 		require_once ROXANE_PATH . 'app/registrars/class-permalinks.php';
 
+		// Load helpers.
+		require_once ROXANE_PATH . 'app/support/helpers.php';
+
 		// Load frontend.
 		require_once ROXANE_PATH . 'app/class-frontend.php';
 
@@ -143,6 +146,9 @@ class Roxane {
 	 * @access public
 	 */
 	public function rehearsal() {
+
+		add_action( 'init',                 [ $this, 'register_blocks' ] );
+		add_filter( 'block_categories_all', [ $this, 'register_block_categories' ], 10, 2 );
 
 		$taxonomies = Taxonomies::instance();
 		add_action( 'init', [ $taxonomies, 'register' ] );
@@ -205,6 +211,42 @@ class Roxane {
 
 		$frontend = Frontend::instance();
 		add_action( 'init', [ $frontend, 'register' ] );
+	}
+
+	/**
+	 * Register custom blocks.
+	 * 
+	 * @since 1.2.0
+	 * @access public
+	 * 
+	 * @return void
+	 */
+	public function register_blocks() {
+
+		register_block_type( ROXANE_PATH . '/build/critic' );
+	}
+
+	/**
+	 * Register custom block categories.
+	 * 
+	 * @since 1.2.0
+	 * @access public
+	 * 
+	 * @param  array $categories
+	 * @param  WP_Post $post
+	 * @return array
+	 */
+	public function register_block_categories( $categories, $post ) {
+
+			return array_merge(
+					$categories,
+					[
+							[
+									'slug' => 'roxane',
+									'title' => 'Roxane',
+							],
+					]
+			);
 	}
 
 	/**
