@@ -7,25 +7,9 @@
     "category": "roxane",
     "description": "Displays a critic of a movie.",
     "attributes": {
-        "tmdb_id": {
-            "type": "integer",
+        "movie": {
+            "type": "object",
 			"default": null
-        },
-        "title": {
-            "type": "string",
-			"default": ""
-        },
-        "year": {
-            "type": "integer",
-			"default": null
-        },
-        "director": {
-            "type": "string",
-            "default": ""
-        },
-        "poster": {
-            "type": "string",
-            "default": ""
         }
     },
     "supports": {

@@ -69,7 +69,7 @@ class Dashboard {
 	 */
 	public function enqueue_styles( $hook_suffix ) {
 
-    $this->register_styles();
+    	$this->register_styles();
 
 		wp_enqueue_style( 'roxane-common' );
 	}
@@ -84,9 +84,20 @@ class Dashboard {
 	 */
 	public function enqueue_scripts( $hook_suffix ) {
 
-    $this->register_scripts();
+    	$this->register_scripts();
 
 		wp_enqueue_script( 'roxane-common' );
+
+		$options = get_option( 'roxane_options', [] );
+        wp_add_inline_script(
+            'roxane-common',
+            'window.roxaneOptions = ' . json_encode( [
+				'tmdb_api_key' => get_option( 'tmdb_api_key' ),
+                'locale' => get_bloginfo( 'language' )
+            ] )
+        );
+
+        wp_set_script_translations( 'roxane-common', 'roxane', ROXANE_PATH . '/languages' );
 	}
 
 	/**
