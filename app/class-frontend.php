@@ -127,7 +127,7 @@ class Frontend {
 			'taxonomy' => 'series',
 		] );
 
-		if ( ! is_array( $series ) ) {
+		if ( ! is_array( $series ) || empty( $series ) ) {
 			return $content;
 		}
 
@@ -139,11 +139,15 @@ class Frontend {
 			'taxonomy' => 'series',
 		] );
 
-		if ( ! is_array( $season ) ) {
+		if ( ! is_array( $season ) || empty( $season ) ) {
 			return $content;
 		}
 
 		$season = array_shift( $season );
+
+		if ( ! $series instanceof \WP_Term || ! $season instanceof \WP_Term ) {
+			return $content;
+		}
 
 		$content = str_replace(
 			[
