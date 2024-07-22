@@ -87,6 +87,7 @@ class Series_Editor {
 	 */
 	public function series_columns( $columns ) {
 
+		$columns['tmdb_id'] = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" height="20" width="20"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M185 23l-17-17L134.1 40l17 17 39 39L0 96 0 512l512 0 0-416L321.9 96l39-39 17-17L344 6.1 327 23l-71 71L185 23zM424 232a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zm24 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48zM64 160l320 0 0 288L64 448l0-288z" fill="#2c3338"/></svg>';
 		$columns['thumbnail'] = '<span class="dashicons dashicons-format-image"></span>';
 	
 		return $columns;
@@ -107,8 +108,10 @@ class Series_Editor {
 	public function series_column( $columns, $column, $id ) {
 
 		if ( $column == 'thumbnail' ) {
-			
 			$columns = '<span><img src="' . esc_url( $this->get_image( $id, 'medium' ) ) . '" alt="' . __( 'Thumbnail' ) . '" class="wp-post-image" /></span>';
+		} elseif ( $column == 'tmdb_id' ) {
+			$tmdb_id = get_term_meta( $id, 'series_tmdb_id', $single = true );
+			$columns = '<a href="' . esc_url( "https://www.themoviedb.org/tv/{$tmdb_id}" ) . '" target="_blank">' . esc_html( $tmdb_id ) . '</a>';
 		}
 
 		return $columns;
@@ -164,7 +167,43 @@ class Series_Editor {
 	public function save_series_image( $term_id ) {
 
 		if ( isset( $_POST['series_image'] ) ) {
-			update_term_meta( $term_id, 'series_image', intval( $_POST['series_image'] ) );
+			if ( false !== strpos( $_POST['series_image'], '.jpg' ) ) {
+
+				$series = get_term( $term_id, 'series' );
+
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				require_once ABSPATH . 'wp-admin/includes/media.php';
+				require_once ABSPATH . 'wp-admin/includes/image.php';
+		
+				$url = "https://image.tmdb.org/t/p/original{$_POST['series_image']}";
+
+				$tmp = download_url( $url );
+				if ( is_wp_error( $tmp ) ) {
+					return false;
+				}
+
+				$args = array(
+					'name' => basename( $url ),
+					'tmp_name' => $tmp,
+				);
+
+				$description = "Aperçu de {$series->name}";
+
+				$post_data = [
+					'post_title' => $description,
+					'post_content' => $description,
+					'post_excerpt' => $description,
+				];
+
+				$attachment_id = media_handle_sideload( $args, $post_id, $description, $post_data );
+				if ( is_wp_error( $attachment_id ) ) {
+					return false;
+				}
+
+				update_term_meta( $term_id, 'series_image', $attachment_id );
+			} else {
+				update_term_meta( $term_id, 'series_image', intval( $_POST['series_image'] ) );
+			}
 		}
 	}
 }

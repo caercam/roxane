@@ -90,7 +90,7 @@ class Term_Meta {
 			return false;
 		}
 
-    foreach ( $_POST['meta_input'] as $key => $value ) {
+    	foreach ( $_POST['meta_input'] as $key => $value ) {
 			if ( isset( $this->term_meta[ $key ] ) ) {
 				$args = $this->term_meta[ $key ];
 				if ( isset( $args['taxonomy'] ) && ! in_array( $taxonomy, (array) $args['taxonomy'], true ) ) {

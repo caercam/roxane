@@ -1,4 +1,15 @@
 
+.wp-list-table thead .manage-column.column-tmdb_id,
+.wp-list-table tfoot .manage-column.column-tmdb_id,
+.wp-list-table tbody .tmdb_id.column-tmdb_id {
+	text-align: center;
+	width: 50px;
+}
+
+.wp-list-table tbody .tmdb_id.column-tmdb_id {
+	max-width: 50px;
+}
+
 .wp-list-table thead .manage-column.column-thumbnail,
 .wp-list-table tfoot .manage-column.column-thumbnail,
 .wp-list-table tbody .thumbnail.column-thumbnail {
@@ -19,4 +30,56 @@
 
 .edit-tags-php .form-field + .submit {
 	margin-top: 10px;
+}
+
+.edit-tags-php.taxonomy-series #addtag .tmdb-search-results {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.edit-tags-php.taxonomy-series #addtag .tmdb-search-results .tmdb-search-result {
+	color: #2271b1;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	text-decoration: none;
+	width: 95%;
+}
+
+.edit-tags-php.taxonomy-series #addtag .tmdb-search-results .tmdb-search-result img {
+	border-radius: 4px;
+}
+
+.edit-tags-php.taxonomy-series #addtag .tmdb-search-results .tmdb-search-result .details {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.edit-tags-php.taxonomy-series #addtag .tmdb-search-results .tmdb-search-result .details .title {
+	font-weight: bold;
+}
+
+.edit-tags-php.taxonomy-series #addtag .tmdb-search-results .tmdb-search-result .details .year {
+	color: #666;
+	font-size: 11px;
+	font-weight: 500;
+}
+
+.edit-tags-php.taxonomy-series #addtag .backdrop-picker {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	padding: 20px;
+}
+
+.edit-tags-php.taxonomy-series #addtag .backdrop-picker button {
+	aspect-ratio: 1.777778;
+}
+
+.edit-tags-php.taxonomy-series #addtag .backdrop-picker button img {
+	height: 100%;
+	object-fit: cover;
+	width: auto;
 }
