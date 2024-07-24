@@ -155,6 +155,7 @@ class Roxane {
 		add_filter( 'term_link', [ $taxonomies, 'term_link' ], 1, 2 );
 
 		$term_meta = Term_Meta::instance();
+		add_action( 'init', [ $term_meta, 'register' ] );
 		add_action( 'saved_term', [ $term_meta, 'save_meta_input' ], 10, 3 );
 
 		$permalinks = Permalinks::instance();
@@ -238,15 +239,15 @@ class Roxane {
 	 */
 	public function register_block_categories( $categories, $post ) {
 
-			return array_merge(
-					$categories,
-					[
-							[
-									'slug' => 'roxane',
-									'title' => 'Roxane',
-							],
-					]
-			);
+		return array_merge(
+			$categories,
+			[
+				[
+					'slug' => 'roxane',
+					'title' => 'Roxane',
+				],
+			]
+		);
 	}
 
 	/**

@@ -119,7 +119,9 @@ class Dashboard {
 	 */
 	private function register_scripts() {
 
-		wp_register_script( 'roxane-common', ROXANE_URL . 'admin/js/common.js', [ 'jquery' ], $this->version, 'all' );
+		$assets = require ROXANE_PATH . 'build/quick-create.asset.php';
+		wp_register_script( 'roxane-quick-create', ROXANE_URL . 'build/quick-create.js', $assets['dependencies'], $this->version, 'all' );
+		wp_register_script( 'roxane-common', ROXANE_URL . 'admin/js/common.js', [ 'jquery', /*'wp-element', 'wp-components',*/ 'roxane-quick-create' ], $this->version, 'all' );
 	}
 
 	/**

@@ -83,3 +83,63 @@
 	object-fit: cover;
 	width: auto;
 }
+
+.edit-php.post-type-post .quick-editor-modal {
+	min-width: 420px;
+}
+
+.edit-php.post-type-post .quick-editor-modal .components-notice {
+	margin-bottom: 20px;
+}
+
+.edit-php.post-type-post .quick-editor-modal .components-datetime__time {
+	display: flex;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview {
+	position: relative;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview a {
+	align-items: center;
+	border: 1px solid #949494;
+	border-radius: 2px;
+	box-shadow: 0 0 0 #0000;
+	display: flex;
+	gap: 10px;
+	padding: 6px;
+	text-decoration: none;
+	width: 100%;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview button {
+	position: absolute;
+	right: 4px;
+	top: 10px;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview button:hover {
+	background: transparent;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview button svg {
+	fill: #666;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview img {
+	aspect-ratio: 1.7777778;
+	border-radius: 3px;
+	height: 100%;
+	max-width: 80px;
+	object-fit: cover;
+	width: auto;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview .title {
+	font-weight: 500;
+}
+
+.edit-php.post-type-post .quick-editor-modal .term-preview .content {
+	color: #666;
+	font-size: 11px;
+}

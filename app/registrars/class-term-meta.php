@@ -51,10 +51,29 @@ class Term_Meta {
 	public function __construct() {
 
 		$this->term_meta = [
+			'series_image' => [
+				'taxonomy' => 'series',
+				'type' => 'string',
+				'single' => true,
+				'show_in_rest' => [
+					'schema' => [
+						'type' => 'number',
+						'context' => [ 'view', 'edit' ],
+						'readonly' => true,
+					],
+				],
+			],
 			'series_tmdb_id' => [
 				'taxonomy' => 'series',
 				'type' => 'string',
 				'single' => true,
+				'show_in_rest' => [
+					'schema' => [
+						'type' => 'number',
+						'context' => [ 'view', 'edit' ],
+						'readonly' => true,
+					],
+				],
 			],
 		];
 	}

@@ -10,20 +10,14 @@
     "lint:js": "wp-scripts lint-js",
     "packages-update": "wp-scripts packages-update",
     "plugin-zip": "wp-scripts plugin-zip",
-    "start": "wp-scripts start",
-    "start:hot": "wp-scripts start --hot"
+    "start": "wp-scripts start"
   },
   "devDependencies": {
 		"@wordpress/scripts": "^26.6.0",
 		"postcss": "^8.4.30",
-		"postcss-for": "^2.1.1",
-		"postcss-import": "^15.1.0",
-		"postcss-nested": "^6.0.1",
-		"postcss-nested-ancestors": "^3.0.0",
 		"underscore": "1.13.6"
 	},
 	"dependencies": {
-		"@wordpress/icons": "^9.32.0",
-		"object-hash": "^3.0.0"
+		"@wordpress/icons": "^9.32.0"
 	}
 }
