@@ -197,14 +197,14 @@ class Frontend {
 		}
 
 		$preg = preg_match_all( '/(.*?) ([0-9]+)(×|x)([0-9]+)/m', $post->post_title, $matches );
-    if ( ! $preg ) {
-			return false;
-    }
+		if ( ! $preg ) {
+				return false;
+		}
 
 		$matches = array_merge( ...array_values( $matches ) );
-    if ( empty( $matches ) ) {
-			return false;
-    }
+		if ( empty( $matches ) ) {
+				return false;
+		}
 
 		if ( ! has_term( 'Séries', 'category', $post ) ) {
 			$term = get_term_by( 'name', 'Séries', 'category' );
@@ -213,24 +213,24 @@ class Frontend {
 			}
 		}
 
-    $series = get_term_by( 'name', $matches[1], 'series' );
-    if ( ! $series ) {
-			return false;
-    }
+		$series = get_term_by( 'name', $matches[1], 'series' );
+		if ( ! $series ) {
+				return false;
+		}
 
-    $seasons = get_terms( [
-			'slug' => "{$matches[1]}-saison-{$matches[2]}",
-			'parent' => $series->term_id,
-			'taxonomy' => 'series',
-			'hide_empty' => false,
-    ] );
+		$seasons = get_terms( [
+				'slug' => "{$matches[1]}-saison-{$matches[2]}",
+				'parent' => $series->term_id,
+				'taxonomy' => 'series',
+				'hide_empty' => false,
+		] );
 
-    if ( ! is_array( $seasons ) ) {
-			return false;
-    }
+		if ( ! is_array( $seasons ) ) {
+				return false;
+		}
 
-    $season = array_shift( $seasons );
-    if ( ! $season ) {
+		$season = array_shift( $seasons );
+		if ( ! $season ) {
 			return false;
 		}
 
@@ -249,11 +249,11 @@ class Frontend {
 		}
 
 		$response = wp_remote_get( "https://api.themoviedb.org/3/tv/{$tmdb_id}/season/{$matches[2]}/episode/{$matches[4]}?api_key={$api_key}" );
-    if ( 200 !== $response['response']['code'] ?? false ) {
-      return false;
-    }
+		if ( 200 !== $response['response']['code'] ?? false ) {
+			return false;
+		}
 
-    $data = json_decode( $response['body'] );
+    	$data = json_decode( $response['body'] );
 		if ( empty( $data->still_path ) ) {
 			return false;
 		}
