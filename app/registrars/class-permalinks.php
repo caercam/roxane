@@ -46,8 +46,6 @@ class Permalinks {
       $new_rules[ $rule ] = $rewrite;
     }
 
-    print_r( $new_rules );
-
     return $new_rules;
   }
 }

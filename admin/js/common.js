@@ -83,8 +83,6 @@ jQuery(document).ready(function ($) {
           $tr.show();
           $editor.remove();
 
-          console.log(apiKey, tmdb_id);
-
           if (apiKey && tmdb_id) {
             fetch(`https://api.themoviedb.org/3/tv/${tmdb_id}?api_key=${apiKey}&language=fr-FR`)
               .then(response => response.json())
