@@ -258,11 +258,27 @@ class Frontend {
 			return false;
 		}
 
-		$url = "https://image.tmdb.org/t/p/original{$data->still_path}";
+		$attachments = get_posts( [
+			'post_type' => 'attachment',
+			'meta_query' => [
+				[
+					'key' => '_wp_attached_file',
+					'value' => $data->still_path,
+					'compare' => 'LIKE',
+				],
+			],
+		] );
+
+		if ( 1 <= count( $attachments ) ) {
+			set_post_thumbnail( $post_id, $attachments[0]->ID );
+			return true;
+		}
 
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		$url = "https://image.tmdb.org/t/p/original{$data->still_path}";
 
 		$tmp = download_url( $url );
 		if ( is_wp_error( $tmp ) ) {

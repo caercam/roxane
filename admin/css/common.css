@@ -143,3 +143,279 @@
 	color: #666;
 	font-size: 11px;
 }
+
+/* ── Movie editor ── */
+
+.edit-php.post-type-post .movie-editor-modal {
+	max-width: 680px;
+	min-width: 520px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search {
+	position: relative;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search .components-spinner {
+	margin: 10px auto;
+	display: block;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-results {
+	background: #fff;
+	border: 1px solid #949494;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	max-height: 300px;
+	overflow-y: auto;
+	margin-top: 4px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result {
+	align-items: center;
+	border-bottom: 1px solid #f0f0f0;
+	color: #1e1e1e;
+	display: flex;
+	gap: 10px;
+	padding: 6px 10px;
+	text-decoration: none;
+	transition: background 0.1s;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result:hover {
+	background: #f0f0f0;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result:last-child {
+	border-bottom: none;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result img {
+	border-radius: 3px;
+	height: 54px;
+	object-fit: cover;
+	width: 36px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result .no-poster {
+	background: #ddd;
+	border-radius: 3px;
+	display: block;
+	height: 54px;
+	width: 36px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result .details {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result .title {
+	font-weight: 500;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-search-result .year {
+	color: #757575;
+	font-size: 12px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview {
+	position: relative;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview a {
+	align-items: center;
+	border: 1px solid #949494;
+	border-radius: 2px;
+	box-shadow: 0 0 0 #0000;
+	display: flex;
+	gap: 10px;
+	padding: 6px;
+	text-decoration: none;
+	width: 100%;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview img {
+	border-radius: 3px;
+	height: 60px;
+	object-fit: cover;
+	width: 40px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview .title {
+	font-weight: 500;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview .content {
+	color: #666;
+	font-size: 11px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview button {
+	position: absolute;
+	right: 4px;
+	top: 10px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview button:hover {
+	background: transparent;
+}
+
+.edit-php.post-type-post .movie-editor-modal .movie-preview button svg {
+	fill: #666;
+}
+
+.edit-php.post-type-post .movie-editor-modal .components-notice {
+	margin: 12px 0;
+}
+
+/* ── Backdrop picker ── */
+
+.edit-php.post-type-post .movie-editor-modal .backdrop-picker {
+	display: grid;
+	gap: 6px;
+	grid-template-columns: repeat( auto-fill, minmax( 180px, 1fr ) );
+	margin-top: 8px;
+	max-height: 260px;
+	overflow-y: auto;
+}
+
+.edit-php.post-type-post .movie-editor-modal .backdrop-option {
+	background: none;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	cursor: pointer;
+	overflow: hidden;
+	padding: 0;
+	transition: border-color 0.15s;
+}
+
+.edit-php.post-type-post .movie-editor-modal .backdrop-option:hover {
+	border-color: #2271b1;
+}
+
+.edit-php.post-type-post .movie-editor-modal .backdrop-option.selected {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+.edit-php.post-type-post .movie-editor-modal .backdrop-option img {
+	aspect-ratio: 16 / 9;
+	display: block;
+	object-fit: cover;
+	width: 100%;
+}
+
+/* ── Image cropper ── */
+
+.edit-php.post-type-post .movie-editor-modal .image-cropper {
+	margin: 12px 0;
+}
+
+.edit-php.post-type-post .movie-editor-modal .image-cropper-instructions {
+	color: #757575;
+	font-size: 12px;
+	margin-bottom: 8px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .image-cropper-canvas-wrapper {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.edit-php.post-type-post .movie-editor-modal .image-cropper-canvas-wrapper canvas {
+	display: block;
+}
+
+.edit-php.post-type-post .movie-editor-modal .image-cropper-actions {
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	margin-top: 8px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .image-cropper-loading,
+.edit-php.post-type-post .movie-editor-modal .image-cropper-error {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 20px;
+}
+
+/* ── Cropped preview ── */
+
+.edit-php.post-type-post .movie-editor-modal .cropped-preview {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .cropped-preview img {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	max-width: 100%;
+}
+
+/* ── Rating picker ── */
+
+.edit-php.post-type-post .movie-editor-modal .rating-picker-control {
+	margin-top: 12px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-picker {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-stars {
+	display: flex;
+	gap: 2px;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-star {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-star svg {
+	display: block;
+	fill: #f0b849;
+	transition: transform 0.1s;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-star:hover svg {
+	transform: scale(1.15);
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-star-zone {
+	bottom: 0;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-star-left {
+	left: 0;
+	width: 50%;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-star-right {
+	right: 0;
+	width: 50%;
+}
+
+.edit-php.post-type-post .movie-editor-modal .rating-label {
+	color: #757575;
+	font-size: 13px;
+	font-weight: 500;
+	min-width: 3em;
+}

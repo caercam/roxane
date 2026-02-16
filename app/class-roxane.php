@@ -127,6 +127,9 @@ class Roxane {
 		// Load helpers.
 		require_once ROXANE_PATH . 'app/support/helpers.php';
 
+		// Load REST API.
+		require_once ROXANE_PATH . 'app/class-rest-api.php';
+
 		// Load frontend.
 		require_once ROXANE_PATH . 'app/class-frontend.php';
 
@@ -160,6 +163,9 @@ class Roxane {
 
 		$permalinks = Permalinks::instance();
 		add_filter( 'series_rewrite_rules', [ $permalinks, 'series_rewrite_rules' ], 1, 1 );
+
+		$rest_api = REST_API::instance();
+		add_action( 'init', [ $rest_api, 'register' ] );
 	}
 
 	/**

@@ -72,6 +72,10 @@ class Dashboard {
     	$this->register_styles();
 
 		wp_enqueue_style( 'roxane-common' );
+
+		if ( 'edit.php' === $hook_suffix && 'post' === get_post_type() ) {
+			wp_enqueue_style( 'roxane-quick-create' );
+		}
 	}
 
 	/**
@@ -88,12 +92,17 @@ class Dashboard {
 
 		wp_enqueue_script( 'roxane-common' );
 
+		if ( 'edit.php' === $hook_suffix && 'post' === get_post_type() ) {
+			wp_enqueue_script( 'roxane-quick-create' );
+		}
+
 		$options = get_option( 'roxane_options', [] );
         wp_add_inline_script(
             'roxane-common',
             'window.roxaneOptions = ' . json_encode( [
 				'tmdb_api_key' => get_option( 'tmdb_api_key' ),
-                'locale' => get_bloginfo( 'language' )
+                'locale' => get_bloginfo( 'language' ),
+				'nonce' => wp_create_nonce( 'wp_rest' ),
             ] )
         );
 
@@ -108,6 +117,8 @@ class Dashboard {
 	 */
 	private function register_styles() {
 
+		wp_register_style( 'roxane-quick-create', ROXANE_URL . 'build/quick-create/index.css', [], $this->version, 'all' );
+
 		wp_register_style( 'roxane-common', ROXANE_URL . 'admin/css/common.css', [], $this->version, 'all' );
 	}
 
@@ -119,9 +130,10 @@ class Dashboard {
 	 */
 	private function register_scripts() {
 
-		$assets = require ROXANE_PATH . 'build/quick-create.asset.php';
-		wp_register_script( 'roxane-quick-create', ROXANE_URL . 'build/quick-create.js', $assets['dependencies'], $this->version, 'all' );
-		wp_register_script( 'roxane-common', ROXANE_URL . 'admin/js/common.js', [ 'jquery', /*'wp-element', 'wp-components',*/ 'roxane-quick-create' ], $this->version, 'all' );
+		$assets = require ROXANE_PATH . 'build/quick-create/index.asset.php';
+		wp_register_script( 'roxane-quick-create', ROXANE_URL . 'build/quick-create/index.js', $assets['dependencies'], $this->version, 'all' );
+
+		wp_register_script( 'roxane-common', ROXANE_URL . 'admin/js/common.js', [ 'jquery' ], $this->version, 'all' );
 	}
 
 	/**

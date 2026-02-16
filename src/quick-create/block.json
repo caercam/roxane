@@ -1,0 +1,13 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "roxane/quick-create",
+    "version": "1.0.0",
+    "title": "Quick Create",
+    "category": "",
+    "description": "",
+    "attributes": {},
+    "textdomain": "roxane",
+    "editorScript": "file:index.js",
+    "editorStyle": "file:index.css"
+}
